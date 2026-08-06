@@ -7,6 +7,6 @@
   "originalCommit": "",
   "pullRequestUrl": "",
   "submissionTag": "",
-  "testStatus": "not-tested",
+  "testStatus": "pass",
   "notes": "นำ Vite build output ที่มี index.html เข้า publish/"
 }
