@@ -1,8 +1,8 @@
 const summaryItems = [
-  ['total', 'ทั้งหมด'],
-  ['todo', 'ต้องทำ'],
-  ['doing', 'กำลังทำ'],
-  ['done', 'เสร็จแล้ว'],
+  ["total", "ทั้งหมด"],
+  ["todo", "ต้องทำ"],
+  ["doing", "กำลังทำ"],
+  ["done", "เสร็จแล้ว"],
 ];
 
 function SummaryPanel({ summary }) {

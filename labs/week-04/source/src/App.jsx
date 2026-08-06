@@ -1,53 +1,48 @@
-import AppHeader from './components/AppHeader.jsx';
-import SummaryPanel from './components/SummaryPanel.jsx';
-import RequestForm from './components/RequestForm.jsx';
-import FilterBar from './components/FilterBar.jsx';
-import RequestList from './components/RequestList.jsx';
-import { initialRequests } from './data/initialRequests.js';
+import { useState } from "react";
+import AppHeader from "./components/AppHeader.jsx";
+import SummaryPanel from "./components/SummaryPanel.jsx";
+import TaskForm from "./components/TaskForm.jsx";
+import FilterBar from "./components/FilterBar.jsx";
+import TaskList from "./components/TaskList.jsx";
+import { initialTasks } from "./data/initialTasks.js";
 
 function App() {
-  // TODO LAB4-R04: เปลี่ยน requests/statusFilter เป็น state
-  const requests = initialRequests;
-  const statusFilter = 'all';
-
-  // TODO LAB4-R04: คำนวณ summary เป็น derived data
+  const [tasks, setTasks] = useState(initialTasks);
+  const [statusFilter, setStatusFilter] = useState("all");
   const summary = {
-    total: requests.length,
-    pending: 0,
-    inProgress: 0,
-    completed: 0,
+    total: tasks.length,
+    todo: tasks.filter((task) => task.status === "todo").length,
+    doing: tasks.filter((task) => task.status === "doing").length,
+    done: tasks.filter((task) => task.status === "done").length,
   };
+  const filteredTasks =
+    statusFilter === "all"
+      ? tasks
+      : tasks.filter((task) => task.status === statusFilter);
 
-  // TODO LAB4-R08: คำนวณ filteredRequests จาก requests + statusFilter
-  const filteredRequests = requests;
-
-  function handleAddRequest(requestData) {
-    console.log('TODO add request', requestData);
+  function handleAddTask(taskData) {
+    const newTask = { id: `TASK-${Date.now()}`, ...taskData, status: "todo" };
+    setTasks((currentTasks) => [newTask, ...currentTasks]);
   }
-
-  function handleDeleteRequest(requestId) {
-    console.log('TODO delete request', requestId);
+  function handleDeleteTask(taskId) {
+    setTasks((currentTasks) =>
+      currentTasks.filter((task) => task.id !== taskId),
+    );
   }
 
   return (
     <>
       <AppHeader
-        title="Campus Service Request"
-        subtitle="LAB 4 Starter — เปลี่ยน DOM-driven UI เป็น State-driven React UI"
+        title="Study Task Board"
+        subtitle="CP05 — Callback delete และ Conditional Rendering"
       />
       <main className="container page-content">
         <SummaryPanel summary={summary} />
         <div className="workspace-grid">
-          <RequestForm onAddRequest={handleAddRequest} />
-          <section className="panel" aria-labelledby="request-list-title">
-            <div className="section-heading">
-              <h2 id="request-list-title">รายการคำร้อง</h2>
-              <FilterBar value={statusFilter} onFilterChange={() => {}} />
-            </div>
-            <RequestList
-              requests={filteredRequests}
-              onDeleteRequest={handleDeleteRequest}
-            />
+          <TaskForm onAddTask={handleAddTask} />
+          <section className="panel">
+            <FilterBar value={statusFilter} onFilterChange={setStatusFilter} />
+            <TaskList tasks={filteredTasks} onDeleteTask={handleDeleteTask} />
           </section>
         </div>
       </main>
