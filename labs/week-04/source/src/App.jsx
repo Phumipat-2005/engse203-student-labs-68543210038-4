@@ -1,48 +1,59 @@
 import { useState } from "react";
 import AppHeader from "./components/AppHeader.jsx";
 import SummaryPanel from "./components/SummaryPanel.jsx";
-import TaskForm from "./components/TaskForm.jsx";
+import RequestForm from "./components/RequestForm.jsx";
 import FilterBar from "./components/FilterBar.jsx";
-import TaskList from "./components/TaskList.jsx";
+import RequestList from "./components/RequestList.jsx";
 import { initialTasks } from "./data/initialTasks.js";
 
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [requests, setRequests] = useState(initialTasks);
   const [statusFilter, setStatusFilter] = useState("all");
-  const summary = {
-    total: tasks.length,
-    todo: tasks.filter((task) => task.status === "todo").length,
-    doing: tasks.filter((task) => task.status === "doing").length,
-    done: tasks.filter((task) => task.status === "done").length,
-  };
-  const filteredTasks =
-    statusFilter === "all"
-      ? tasks
-      : tasks.filter((task) => task.status === statusFilter);
 
-  function handleAddTask(taskData) {
-    const newTask = { id: `TASK-${Date.now()}`, ...taskData, status: "todo" };
-    setTasks((currentTasks) => [newTask, ...currentTasks]);
+  const summary = {
+    total: requests.length,
+    pending: requests.filter((request) => request.status === "pending").length,
+    "in-progress": requests.filter((request) => request.status === "in-progress").length,
+    completed: requests.filter((request) => request.status === "completed").length,
+  };
+
+  const filteredRequests =
+    statusFilter === "all"
+      ? requests
+      : requests.filter((request) => request.status === statusFilter);
+
+  function handleAddRequest(requestData) {
+    const newRequest = {
+      id: `REQ-${Date.now()}`,
+      ...requestData,
+      status: "pending",
+    };
+
+    setRequests((currentRequests) => [newRequest, ...currentRequests]);
   }
-  function handleDeleteTask(taskId) {
-    setTasks((currentTasks) =>
-      currentTasks.filter((task) => task.id !== taskId),
+
+  function handleDeleteRequest(requestId) {
+    setRequests((currentRequests) =>
+      currentRequests.filter((request) => request.id !== requestId),
     );
   }
 
   return (
     <>
       <AppHeader
-        title="Study Task Board"
-        subtitle="CP05 — Callback delete และ Conditional Rendering"
+        title="Campus Service Request"
+        subtitle="Lab 4 — React component, Props, State เเละ Events"
       />
       <main className="container page-content">
         <SummaryPanel summary={summary} />
         <div className="workspace-grid">
-          <TaskForm onAddTask={handleAddTask} />
+          <RequestForm onAddRequest={handleAddRequest} />
           <section className="panel">
             <FilterBar value={statusFilter} onFilterChange={setStatusFilter} />
-            <TaskList tasks={filteredTasks} onDeleteTask={handleDeleteTask} />
+            <RequestList
+              requests={filteredRequests}
+              onDeleteRequest={handleDeleteRequest}
+            />
           </section>
         </div>
       </main>

@@ -6,10 +6,10 @@ const requiredFiles = [
   'src/App.jsx',
   'src/components/AppHeader.jsx',
   'src/components/SummaryPanel.jsx',
-  'src/components/TaskForm.jsx',
+  'src/components/RequestForm.jsx',
   'src/components/FilterBar.jsx',
-  'src/components/TaskList.jsx',
-  'src/components/TaskCard.jsx',
+  'src/components/RequestList.jsx',
+  'src/components/RequestCard.jsx',
   'src/data/initialTasks.js',
 ];
 const failures = [];
@@ -29,10 +29,10 @@ const checks = [
   ['submit event', /onSubmit=\{/],
   ['click event', /onClick=\{/],
   ['list rendering', /\.map\s*\(/],
-  ['stable key', /key=\{task\.id\}/],
-  ['immutable add', /\[\s*newTask\s*,\s*\.\.\./],
+  ['stable key', /key=\{(?:task|request)\.id\}/],
+  ['immutable add', /\[\s*(?:newTask|newRequest)\s*,\s*\.\.\./],
   ['immutable delete', /\.filter\s*\(/],
-  ['conditional UI', /tasks\.length\s*===\s*0/],
+  ['conditional UI', /(?:tasks|requests)\.length\s*===\s*0/],
 ];
 
 for (const [label, pattern] of checks) {

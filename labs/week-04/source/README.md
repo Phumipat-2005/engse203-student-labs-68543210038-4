@@ -2,23 +2,29 @@
 
 ## ผู้จัดทำ
 
-- ชื่อ–นามสกุล: TODO
-- รหัสนักศึกษา: TODO
-- Section: TODO
+- ชื่อ–นามสกุล: นายภูมิพัฒน์ วงศ์ดาว
+- รหัสนักศึกษา: 68543210038-4
+- Section: SEC2
 
 ## URLs
 
-- Repository: TODO
-- Pull Request: TODO
-- GitHub Pages: TODO
+- Repository: https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4
+- Pull Request: https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/pull/4
+- GitHub Pages: https://phumipat-2005.github.io/engse203-student-labs-68543210038-4/
 
-## Component Tree
+## โครงสร้าง Component
 
-```text
-TODO: วาด App → child components และระบุ state owner
+```
+App (เป็นเจ้าของ state ของ requests และ statusFilter)
+├── AppHeader
+├── SummaryPanel (รับ props summary)
+├── RequestForm (รับ callback onAddRequest, เป็นเจ้าของ formData, errors, feedback)
+├── FilterBar (รับ props value และ callback onFilterChange)
+└── RequestList (รับ props requests และ callback onDeleteRequest)
+    └── RequestCard (รับ props request และ callback onDeleteRequest)
 ```
 
-## Setup และ Run
+## การติดตั้งและรัน
 
 ```bash
 nvm use
@@ -29,37 +35,50 @@ npm run build
 npm run preview
 ```
 
-## State / Props / Callback Explanation
+## อธิบาย State / Props / Callback
 
-TODO: อธิบายว่าใคร owns requests/filter/form state, props ไหลลงตรงไหน และ callback ไหลกลับตรงไหน
+- `App` เป็นเจ้าของ state ของ `requests` และ `statusFilter`
+- `RequestForm` เป็นเจ้าของ state ท้องถิ่น `formData`, `errors`, และ `feedback`
+- `SummaryPanel` รับ props `summary` จาก App
+- `FilterBar` รับ props `value={statusFilter}` และ callback `onFilterChange={setStatusFilter}` จาก App
+- `RequestList` รับ props `requests` และ callback `onDeleteRequest` จาก App
+- `RequestCard` รับ props `request` และเรียก `onDeleteRequest(request.id)` เมื่อกดปุ่มลบ
 
-## Test Evidence
+## หลักฐานการทดสอบ
 
-| Test ID | Actual Result | Pass/Fail | Evidence/Screenshot |
+| รหัส TC | ผลลัพธ์จริง | ผล | หลักฐาน/ภาพ |
 |---|---|---|---|
-| TC-01 Initial | TODO | TODO | TODO |
-| TC-02 Controlled input | TODO | TODO | TODO |
-| TC-03 Invalid | TODO | TODO | TODO |
-| TC-04 Valid add | TODO | TODO | TODO |
-| TC-05 Filter | TODO | TODO | TODO |
-| TC-06 All | TODO | TODO | TODO |
-| TC-07 Empty | TODO | TODO | TODO |
-| TC-08 Delete | TODO | TODO | TODO |
-| TC-09 Mobile | TODO | TODO | TODO |
-| TC-10 Keyboard | TODO | TODO | TODO |
-| TC-11 Build | TODO | TODO | TODO |
-| TC-12 Pages | TODO | TODO | TODO |
+| TC-01 Initial | หน้าเริ่มต้นแสดงคำร้องและสรุปถูกต้อง | ผ่าน | `../evidence/desktop.png` |
+| TC-02 Controlled input | ฟิลด์ของฟอร์มอัปเดตตาม state | ผ่าน | `../evidence/validationState.png` |
+| TC-03 Invalid | submit ผิดไม่เพิ่มคำร้อง และแสดง error | ผ่าน | `../evidence/validationState.png` |
+| TC-04 Valid add | submit ถูกเพิ่มคำร้อง pending, สรุปเพิ่ม, ฟอร์ม reset | ผ่าน | `../evidence/validationState.png` |
+| TC-05 Filter | แสดงเฉพาะสถานะที่เลือก | ผ่าน | `../evidence/desktop.png` |
+| TC-06 All | เลือก all แล้วเห็นทุกสถานะ | ผ่าน | `../evidence/desktop.png` |
+| TC-07 Empty | แสดงข้อความเมื่อไม่มีรายการ | ผ่าน | `../evidence/emptyState.png` |
+| TC-08 Delete | ลบคำร้องตาม id และสรุป/รายการเปลี่ยน | ผ่าน | `../evidence/desktop.png` |
+| TC-09 Mobile | responsive 375px ไม่มี horizontal scroll | ผ่าน | `../evidence/mobile-375.png` |
+| TC-10 Keyboard | keyboard focus/label/error/feedback works | ผ่าน | `../evidence/validation-state.png` |
+| TC-11 Build | `npm run build` ผ่าน | ผ่าน | `../evidence/desktop.png` |
+| TC-12 Pages | preview Pages โหลด assets ได้ครบ | ผ่าน | `../evidence/desktop.png` |
 
-## Screenshots
+## รูปภาพ
 
-- Desktop: `evidence/desktop.png`
-- Mobile 375px: `evidence/mobile-375.png`
-- Validation/empty state: TODO
+![Desktop screenshot](../evidence/desktop.png)
 
-## Week 03 → Week 04 Reflection
+![Mobile 375 screenshot](../evidence/mobile-375.png)
 
-TODO: เปรียบเทียบ DOM mutation กับ State-driven UI 3–5 ประโยค
+![Validation state](../evidence/validation-state.png)
 
-## AI / External Resource Disclosure
+![Empty state](../evidence/empty-state.png)
 
-ระบุเครื่องมือหรือแหล่งที่ใช้, prompt/คำถามสำคัญ, ส่วนที่นำมาปรับ และวิธีที่ตรวจสอบความถูกต้อง หากไม่ได้ใช้ให้เขียนว่า “ไม่ได้ใช้”
+## สรุป Week 03 → Week 04
+
+Week 03 เราได้สร้างหน้าเว็บโดยใช้ HTML และ CSS เป็นหลักในการวางโครงสร้างและตกแต่งหน้าเว็บ ส่วนการเปลี่ยนแปลงข้อมูลหรือสถานะจะเขียนโค้ดปรับ DOM โดยตรงหรืออาศัย JavaScript แบบธรรมดา แต่ Week 04 เราได้ใช้ React ซึ่งทำให้เราเก็บข้อมูลคำร้องใน state และให้ component ทำงานเป็นตัวแสดงผล ถ้า state เปลี่ยน React จะ render UI ใหม่ให้เอง ทำให้โค้ดแยกเป็นส่วน ๆ ชัดเจนขึ้นและหลีกเลี่ยงการแก้ไข DOM โดยตรง
+
+## เปิดเผยการใช้ AI / แหล่งข้อมูลภายนอก
+
+ระบุเครื่องมือหรือแหล่งที่ใช้, prompt/คำถามสำคัญ, ส่วนที่นำมาปรับ และวิธีที่ตรวจสอบความถูกต้อง หากไม่ได้ใช้ให้เขียนว่า “ไม่ได้ใช้” <p>
+Windows WSL Ubuntu-24.04 <p>
+AI : Gemini, Copilot <p>
+Browser : Edge <p>
+document : https://github.com/se-rmutl/engse203-lab/blob/main/labs/week-04-react-components-state/lab04/README.md
