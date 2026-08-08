@@ -1,28 +1,46 @@
-# Week 02 — Modern JavaScript Learning Dashboard
+# ENGSE203 LAB 02 — Modern JavaScript, Modules & Async Data
 
-## รุ่นใหม่
+## ผู้จัดทำ
 
-เปิด `lab/week-02` แล้วคัดลอก LAB02 starter จาก Course Repository เข้า `source/`
+- ชื่อ-นามสกุล: นายภูมิพัฒน์ วงศ์ดาว
+- รหัสนักศึกษา: 68543210038-4
+- ระบบปฏิบัติการที่ใช้: macOS / Windows
+
+## คำอธิบายโครงงาน
+
+- LAB 02 ไม่ได้มุ่งเพียงให้หน้า Dashboard แสดงผลได้ แต่ให้ผู้เรียนฝึกเขียนโค้ดที่ อ่านง่าย แยกหน้าที่ชัดเจน แก้ไขได้ และรับมือกับข้อมูลจริงได้ เอกสารในโฟลเดอร์ docs/ ทั้ง 4 เรื่องจึงเป็นพื้นฐานที่ต้องเชื่อมไปใช้กับโค้ดใน src/ โดยตรง
+
+## เครื่องมือที่ใช้
+
+- Visual Studio Code , WSL Ubuntu24.04
+
+## วิธีติดตั้งและรัน
 
 ```bash
-npm --prefix labs/week-02/source install
-npm --prefix labs/week-02/source run check
-npm --prefix labs/week-02/source run build
-npm run import:publish -- week-02 labs/week-02/source/dist
+npm install
+npm run dev
+npm run check
+npm run build
 ```
 
-Starter ใช้ Vite `base: './'` เพื่อให้ทำงานใต้ Pages Hub subpath
+## ภาพหน้าจอ normal state
+![normal state](./evidence/normalState.png)
 
-## รุ่นปัจจุบันที่มี repo เดิม
+## ภาพหน้าจอ error state
+![error state](./evidence/errorState.png)
 
-```bash
-npm run import:source -- week-02 /path/to/old-lab02
-```
+## GitHub Pages URL
+https://phumipat-2005.github.io/engse203-lab02-68543210038-4
 
-build โครงงานเดิมแล้ว import output ที่มี `index.html` เข้า publish พร้อมตั้ง `sourceOrigin: "migrated-repository"`
+## ปัญหาที่พบและวิธีแก้ไข
 
-## Evidence
+- ปัญหา:
+- วิธีแก้:
 
-- Normal/error state
-- `npm run check` และ build
-- PR และ Pages result
+## References & AI Assistance
+
+- Source / Documentation: engse203-lab/labs
+/week-02-modern-javascript
+- AI tool used:
+- Used for: engse203-lab02 — Modern JavaScript, Modules & Async Data
+- My adaptation:
