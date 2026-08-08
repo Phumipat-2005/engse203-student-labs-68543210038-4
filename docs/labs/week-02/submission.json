@@ -9,15 +9,8 @@
   "submissionTag": "lab-02-submission-v1",
   "testStatus": "pass",
   "notes": "นำ Vite build output ที่มี index.html เข้า publish/",
-<<<<<<< HEAD
-  "pageUrl": "https://phumipat-2005.github.io/engse203-student-labs-68543210038/labs/week-02/",
-  "sourceUrl": "https://github.com/phumipat-2005/engse203-student-labs-68543210038/tree/lab/week-02/labs/week-02/source",
-  "hasPublish": true,
-  "sourceEntries": 2
-=======
   "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-02/",
   "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-02/labs/week-02/source",
-  "hasPublish": false,
-  "sourceEntries": 0
->>>>>>> lab/week-04
+  "hasPublish": true,
+  "sourceEntries": 2
 }
