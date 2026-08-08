@@ -2,6 +2,7 @@
   {
     "week": "week-01",
     "title": "Developer Environment & GitHub Repository Setup",
+<<<<<<< HEAD
     "status": "submitted",
     "sourceOrigin": "migrated-repository",
     "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-lab01-68543210038-4",
@@ -12,6 +13,18 @@
     "notes": "รัน hello.js และตรวจ environment แล้ว",
     "pageUrl": "https://phumipat-2005.github.io/engse203-student-labs-68543210038/labs/week-01/",
     "sourceUrl": "https://github.com/phumipat-2005/engse203-student-labs-68543210038/tree/lab/week-01/labs/week-01/source",
+=======
+    "status": "draft",
+    "sourceOrigin": "course-starter",
+    "originalRepoUrl": "",
+    "originalCommit": "",
+    "pullRequestUrl": "",
+    "submissionTag": "",
+    "testStatus": "not-tested",
+    "notes": "LAB 1 ใช้ evidence report ได้โดยไม่ต้องมี web application",
+    "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-01/",
+    "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-01/labs/week-01/source",
+>>>>>>> lab/week-04
     "hasPublish": false,
     "sourceEntries": 4
   },
@@ -26,10 +39,17 @@
     "submissionTag": "lab-02-submission-v1",
     "testStatus": "pass",
     "notes": "นำ Vite build output ที่มี index.html เข้า publish/",
+<<<<<<< HEAD
     "pageUrl": "https://phumipat-2005.github.io/engse203-student-labs-68543210038/labs/week-02/",
     "sourceUrl": "https://github.com/phumipat-2005/engse203-student-labs-68543210038/tree/lab/week-02/labs/week-02/source",
     "hasPublish": true,
     "sourceEntries": 2
+=======
+    "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-02/",
+    "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-02/labs/week-02/source",
+    "hasPublish": false,
+    "sourceEntries": 0
+>>>>>>> lab/week-04
   },
   {
     "week": "week-03",
@@ -42,25 +62,31 @@
     "submissionTag": "lab-03-submission-v1",
     "testStatus": "pass",
     "notes": "Static site ต้องมี index.html ที่ publish root",
+<<<<<<< HEAD
     "pageUrl": "https://phumipat-2005.github.io/engse203-student-labs-68543210038/labs/week-03/",
     "sourceUrl": "https://github.com/phumipat-2005/engse203-student-labs-68543210038/tree/lab/week-03/labs/week-03/source",
     "hasPublish": true,
+=======
+    "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-03/",
+    "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-03/labs/week-03/source",
+    "hasPublish": false,
+>>>>>>> lab/week-04
     "sourceEntries": 0
   },
   {
     "week": "week-04",
     "title": "React Campus Service Request",
-    "status": "draft",
-    "sourceOrigin": "course-starter",
-    "originalRepoUrl": "",
-    "originalCommit": "",
+    "status": "ready",
+    "sourceOrigin": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/main/labs/week-04/source",
+    "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/main",
+    "originalCommit": "lab04",
     "pullRequestUrl": "",
-    "submissionTag": "",
-    "testStatus": "not-tested",
+    "submissionTag": "lab-04-submission-v1",
+    "testStatus": "pass",
     "notes": "React/Vite build output ต้องอยู่ใน publish/ ก่อนสร้าง Pages Hub",
-    "pageUrl": "https://phumipat-2005.github.io/engse203-student-labs-68543210038/labs/week-04/",
-    "sourceUrl": "https://github.com/phumipat-2005/engse203-student-labs-68543210038/tree/lab/week-04/labs/week-04/source",
-    "hasPublish": false,
-    "sourceEntries": 0
+    "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-04/",
+    "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-04/labs/week-04/source",
+    "hasPublish": true,
+    "sourceEntries": 13
   }
 ]
