@@ -46,6 +46,7 @@ async function waitForLabDelay() {
  * ทำไมต้อง structuredClone: เพื่อให้ผู้เรียกได้ข้อมูลชุดของตัวเอง
  * ถ้าคืนตัวเดิมไปตรง ๆ แล้วมีคนแก้ ข้อมูลต้นทางจะเปลี่ยนตามโดยไม่ตั้งใจ
  */
+// TODO 5A-1 → เขียนตัวฟังก์ชันแทนบรรทัด throw
 async function fetchSeedRequests() {
   const baseUrl = import.meta.env?.BASE_URL ?? '/';
   const response = await fetch(`${baseUrl}data/initialRequests.json`);
@@ -71,9 +72,13 @@ export async function getRequests(options = {}) {
     return [];
   }
 
-  return fetchSeedRequests();
+  // TODO 5A-2: return fetchSeedRequests();
   // TODO 5B-3: เปลี่ยนบรรทัดข้างบนเป็น return loadNormalRequests(options.onRecovery);
+  
+  //throw new Error('TODO 5A-2: getRequests normal flow');
+  return fetchSeedRequests();
 }
+
 
 /**
  * TODO 5A-3 · หาคำร้องใบเดียวตามรหัส
