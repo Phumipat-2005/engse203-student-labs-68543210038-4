@@ -65,7 +65,6 @@ export function readStoredRequests() {
   }
 }
 
-
 /**
  * TODO 5B-B · เขียนข้อมูลลงที่เก็บ
  *
@@ -85,7 +84,6 @@ export function writeStoredRequests(requests) {
     requests: structuredClone(requests),
   }));
 }
-
 
 /**
  * ให้มาแล้ว — สังเกตว่าใช้ removeItem ไม่ใช่ clear()
