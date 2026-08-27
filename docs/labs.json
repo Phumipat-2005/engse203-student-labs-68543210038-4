@@ -62,5 +62,21 @@
     "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-04/labs/week-04/source",
     "hasPublish": true,
     "sourceEntries": 13
+  },
+  {
+  "week": "week-05",
+  "title": "react-mini-app",
+  "status": "ready",
+  "sourceOrigin": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-05/labs/week-05/starter/src",
+  "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-05/labs/week-05/starter",
+  "originalCommit": "fix(week-05): check point 133/133",
+  "pullRequestUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/pull/5",
+  "submissionTag": "lab-05-submission-v1",
+  "testStatus": "pass",
+  "notes": "ส่งงาน LAB05 ครบทุก Checkpoint (5A/5B) ผ่านการทดสอบ UI, LocalStorage persistence และ Data Recovery เรียบร้อยแล้ว",
+  "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-05/",
+  "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/main/labs/week-05/starter/src",
+  "hasPublish": true,
+  "sourceEntries": 20
   }
 ]
