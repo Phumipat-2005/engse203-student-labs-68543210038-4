@@ -19,7 +19,7 @@
 | TC-L5-09 | เปิด `#/?scenario=error` | แสดง ErrorState แจ้งเตือนข้อผิดพลาดพร้อมปุ่มกด Retry | PASS | `images/state-error-retry.png` |
 | TC-L5-10 | กด Retry | ระบบทำการโหลดข้อมูลใหม่อีกครั้งตามที่กำหนด | PASS | Retry trigger ทำงานปกติ |
 | TC-L5-11 | เปิด `#/?scenario=empty` | แสดง EmptyState แจ้งว่าไม่พบรายการคำร้องในระบบ | PASS | `images/state-empty.png` |
-| TC-L5-12 | รัน public checker | รัน `npm run check` ผ่านครบทุกเงื่อนไข 100% | PASS | `images/npm-run-check.png` passed all suites |
+| TC-L5-12 | รัน public checker | รัน `npm run check` ผ่านครบทุกเงื่อนไข 100% | PASS | `images/npm-run-check.png` + command summary |
 | TC-L5-13 | submit form ผิด validation | แสดงข้อความแจ้งเตือนข้อผิดพลาดใต้ช่องกรอก และไม่อนุญาตให้ส่งฟอร์ม | PASS | Validation schema ทำงานถูกต้อง |
 | TC-L5-14 | เพิ่ม valid request แล้ว refresh | คำร้องใหม่ถูกบันทึกลง localStorage และคงอยู่หลังรีเฟรชหน้าเว็บ | PASS | `images/persistence-add-refresh.png` |
 | TC-L5-15 | ทดสอบ filters ทุกค่า | กรองข้อมูลตามคำค้นหา, ประเภท, ความเร่งด่วน และสถานะได้ถูกต้อง | PASS | Filter & Search state ทำงานปกติ |
