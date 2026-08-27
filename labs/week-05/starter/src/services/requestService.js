@@ -60,13 +60,20 @@ async function fetchSeedRequests() {
  *
  * ส่วน scenario error และ empty เขียนไว้ให้แล้ว ใช้ทดสอบ UI
  */
-async function loadNormalRequests() {
+async function loadNormalRequests(onRecovery) {
   const stored = readStoredRequests();
   if (stored.status === 'valid') return stored.requests;
 
   const seedRequests = await fetchSeedRequests();
   writeStoredRequests(seedRequests);
-  // TODO 5B-2b: แจ้งผู้ใช้เมื่อกู้ข้อมูลจากของเสีย (ทำใน CP04b)
+
+  if (stored.status === 'invalid') {
+    const message = stored.reason ?? 'กู้คืนข้อมูลเริ่มต้นเนื่องจากข้อมูลในหน่วยความจำเสียหาย';
+    if (typeof onRecovery === 'function') {
+      onRecovery(message);
+    }
+  }
+
   return seedRequests;
 }
 
@@ -80,7 +87,8 @@ export async function getRequests(options = {}) {
     return [];
   }
 
-  return loadNormalRequests();
+  const onRecovery = typeof options === 'function' ? options : options?.onRecovery;
+  return loadNormalRequests(onRecovery);
 }
 
 /**
