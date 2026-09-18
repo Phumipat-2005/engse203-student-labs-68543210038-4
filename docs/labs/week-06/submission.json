@@ -1,0 +1,16 @@
+{
+  "week": "week-06",
+  "title": "Campus Service API",
+  "status": "ready",
+  "sourceOrigin": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-06/labs/week-06/starter/src",
+  "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-lab06-68543210038-4",
+  "originalCommit": "LAB06: RESTful API ด้วย Express — CRUD, middleware, error handling",
+  "pullRequestUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/pull/6",
+  "submissionTag": "lab-06-submission-v1",
+  "testStatus": "pass",
+  "notes": "ส่งงาน LAB06 ครบทุก Checkpoint (CP00-08) เเละ Challenge (CH01-03)",
+  "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-06/",
+  "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-06/labs/week-06/starter/src",
+  "hasPublish": true,
+  "sourceEntries": 20
+}
