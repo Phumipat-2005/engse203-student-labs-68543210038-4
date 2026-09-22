@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 
 /**
  * TODO W07-CFG (CP10) · รวมค่าตั้งค่าไว้ที่เดียว
@@ -11,8 +11,6 @@ import "dotenv/config";
  *
  * คำใบ้: process.env.PORT ได้ค่าเป็น string เสมอ — ต้องแปลงเป็นตัวเลขเอง
  */
-import 'dotenv/config';
-
 export const config = {
   port: Number(process.env.PORT ?? 3001),
   corsOrigin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',

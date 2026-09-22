@@ -1,12 +1,12 @@
-import { readFile } from "node:fs/promises";
+import { readFile } from 'node:fs/promises';
 
-const SEED_PATH = new URL("../../data/initialRequests.json", import.meta.url);
+const SEED_PATH = new URL('../../data/initialRequests.json', import.meta.url);
 
 /** ข้อมูลอยู่ในหน่วยความจำของเซิร์ฟเวอร์ — หน่วย 4 จะเปลี่ยนเป็นฐานข้อมูล */
 let requests = [];
 
 export async function loadSeed() {
-  const raw = await readFile(SEED_PATH, "utf8");
+  const raw = await readFile(SEED_PATH, 'utf8');
   requests = JSON.parse(raw);
   return requests;
 }
@@ -39,7 +39,7 @@ export function create(input) {
     location: input.location.trim(),
     details: input.details.trim(),
     priority: input.priority,
-    status: "pending",
+    status: 'pending',
   };
   requests.push(newRequest);
   return structuredClone(newRequest);
