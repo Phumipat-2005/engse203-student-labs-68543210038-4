@@ -1,0 +1,12 @@
+{
+  "week": "week-09",
+  "title": "sql-fundamentals",
+  "status": "ready",
+  "sourceOrigin": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-09/labs/week-09/source",
+  "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4",
+  "originalCommit": "LAB09: SQL และฐานข้อมูลเชิงสัมพันธ์",
+  "pullRequestUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/pull/8",
+  "submissionTag": "lab-09-submission-v1",
+  "testStatus": "pass",
+  "notes": "ส่งงาน LAB09 ครบทุก Checkpoint + Challenge (CP17-25)"
+}
