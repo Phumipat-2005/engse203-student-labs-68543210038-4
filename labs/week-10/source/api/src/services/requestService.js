@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DatabaseSync } from "node:sqlite";
 import { readFileSync, existsSync } from "node:fs";
+import { AppError } from "../middleware/errorHandler.js";
 
 let db;
 /**
@@ -92,27 +93,43 @@ function nextId() {
   return `REQ-${String(n).padStart(3, "0")}`;
 }
 
+function toAppError(err) {
+  const m = err.message ?? "";
+  if (m.includes("FOREIGN KEY")) return new AppError("อ้างถึงข้อมูลที่ไม่มีอยู่จริง", 400);
+  if (m.includes("CHECK"))       return new AppError("ค่าที่ส่งมาไม่อยู่ในรายการที่กำหนด", 400);
+  if (m.includes("UNIQUE"))      return new AppError("ข้อมูลนี้มีอยู่แล้วในระบบ", 409);
+  return err; // error อื่นปล่อยผ่าน → errorHandler ตอบ 500
+}
+
 export function create(input) {
   const id = nextId();
-  db.prepare(
-    `INSERT INTO requests (id, requester_id, request_type, location, details, priority)
-     VALUES (?, ?, ?, ?, ?, ?)`,
-  ).run(
-    id,
-    resolveUserId(input.requesterName.trim()), // ← แปลงตรงนี้
-    input.requestType,
-    input.location.trim(),
-    input.details.trim(),
-    input.priority ?? "normal",
-  );
-  return findById(id); // คืนรูปแบบที่ frontend ต้องการ
+  try {
+    db.prepare(
+      `INSERT INTO requests (id, requester_id, request_type, location, details, priority)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+    ).run(
+      id,
+      resolveUserId(input.requesterName.trim()),
+      input.requestType,
+      input.location.trim(),
+      input.details.trim(),
+      input.priority ?? "normal",
+    );
+  } catch (err) {
+    throw toAppError(err);
+  }
+  return findById(id);
 }
 
 export function updateStatus(id, status) {
-  const result = db
-    .prepare("UPDATE requests SET status = ? WHERE id = ?")
-    .run(status, id);
-  return result.changes ? findById(id) : null;
+  try {
+    const result = db
+      .prepare("UPDATE requests SET status = ? WHERE id = ?")
+      .run(status, id);
+    return result.changes ? findById(id) : null;
+  } catch (err) {
+    throw toAppError(err);
+  }
 }
 
 export function remove(id) {
