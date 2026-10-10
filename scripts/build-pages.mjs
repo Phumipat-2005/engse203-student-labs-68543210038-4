@@ -1,6 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { ROOT, escapeHtml, exists, listLabs, meaningfulEntries, readJson, validHttpUrl } from "./common.mjs";
+import {
+  ROOT,
+  escapeHtml,
+  exists,
+  listLabs,
+  meaningfulEntries,
+  readJson,
+  validHttpUrl,
+} from "./common.mjs";
 
 const config = await readJson(path.join(ROOT, "student-config.json"));
 const labs = await listLabs();
@@ -50,17 +58,33 @@ for (const week of labs) {
 
   const sourceUrl = `${repoUrl}/tree/lab/${week}/labs/${week}/source`;
   const prUrl = validHttpUrl(metadata.pullRequestUrl);
+  const demoUrl = validHttpUrl(metadata.demoUrl);
+  const resultUrl = demoUrl || `labs/${escapeHtml(week)}/`;
+  const resultTarget = demoUrl
+    ? ' target="_blank" rel="noopener noreferrer"'
+    : "";
   const pageUrl = `${pagesBase}/labs/${week}/`;
-  const sourceCount = (await meaningfulEntries(path.join(labRoot, "source"))).length;
-  const summary = { ...metadata, pageUrl, sourceUrl, hasPublish, sourceEntries: sourceCount };
+  const sourceCount = (await meaningfulEntries(path.join(labRoot, "source")))
+    .length;
+  const summary = {
+    ...metadata,
+    pageUrl,
+    sourceUrl,
+    hasPublish,
+    sourceEntries: sourceCount,
+  };
   summaries.push(summary);
-  await fs.writeFile(path.join(target, "submission.json"), `${JSON.stringify(summary, null, 2)}\n`, "utf8");
+  await fs.writeFile(
+    path.join(target, "submission.json"),
+    `${JSON.stringify(summary, null, 2)}\n`,
+    "utf8",
+  );
 
   cards.push(`<article class="lab-card" data-status="${escapeHtml(metadata.status)}">
     <div class="card-top"><span class="week">${escapeHtml(week)}</span><span class="status">${escapeHtml(statusLabels[metadata.status] ?? metadata.status)}</span></div>
     <h2>${escapeHtml(metadata.title)}</h2>
     <p>Test: <strong>${escapeHtml(metadata.testStatus)}</strong> • ${hasPublish ? "Web output" : "Evidence report"}</p>
-    <div class="links"><a class="primary" href="labs/${escapeHtml(week)}/">View Result</a><a href="${escapeHtml(sourceUrl)}">Source</a>${prUrl ? `<a href="${escapeHtml(prUrl)}">Pull Request</a>` : ""}</div>
+    <div class="links"><a class="primary" href="${resultUrl}"${resultTarget}>View Result</a><a href="${escapeHtml(sourceUrl)}">Source</a>${prUrl ? `<a href="${escapeHtml(prUrl)}">Pull Request</a>` : ""}</div>
     <small>Version: ${escapeHtml(metadata.submissionTag || "not submitted")}</small>
   </article>`);
 }
@@ -73,7 +97,11 @@ const dashboard = `<!doctype html>
 <main><div class="notice"><strong>Instructor View:</strong> เปิดผลลัพธ์ Source, Pull Request และ submission version ของแต่ละ LAB จากการ์ดด้านล่าง</div><section class="labs">${cards.join("\n")}</section></main></body></html>`;
 
 await fs.writeFile(path.join(docsRoot, "index.html"), dashboard, "utf8");
-await fs.writeFile(path.join(docsRoot, "labs.json"), `${JSON.stringify(summaries, null, 2)}\n`, "utf8");
+await fs.writeFile(
+  path.join(docsRoot, "labs.json"),
+  `${JSON.stringify(summaries, null, 2)}\n`,
+  "utf8",
+);
 
 console.log(`Build Pages Hub: PASS — ${labs.length} LAB(s)`);
 console.log(`Output: ${path.relative(ROOT, docsRoot)}/`);

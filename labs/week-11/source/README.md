@@ -100,3 +100,14 @@ NODE_ENV=production PORT=3001 npm start
 2. **ทำไมถึงเลือกใช้ SQLite แทน MongoDB?**
    - ข้อมูลคำร้องภายในระบบมีโครงสร้าง Schema ที่ชัดเจนและมีความสัมพันธ์แบบเชิงสัมพันธ์ (Relational Data)
    - SQLite เป็น Serverless Database ที่จัดเก็บในไฟล์เครื่องโดยตรง ไม่ต้องต่อเน็ตภายนอก ประสิทธิภาพสูงสำหรับการทดสอบ และทำงานแบบ Synchronous ได้อย่างเสถียร
+
+## 7. สื่อประกอบการประเมิน (Demo Video & Evidence)
+
+- 🎥 **วิดีโอสาธิตการทำงาน (ช่วง A & B):** ดูรายละเอียดและลิงก์รับชมได้ที่ไฟล์ [DEMO.md](./DEMO.md)
+- 📸 **ภาพหลักฐานการจำลอง Production:** จัดเก็บในโฟลเดอร์ `evidence/images/`
+
+## 8. Live Demo
+🔗 https://campus-service-68543210038-4.onrender.com/
+
+หมายเหตุ: Render free tier — เปิดครั้งแรกช้า 30–60 วินาที
+ข้อมูลที่เพิ่มจะกลับเป็นค่าตั้งต้นเมื่อ restart (ephemeral filesystem)
