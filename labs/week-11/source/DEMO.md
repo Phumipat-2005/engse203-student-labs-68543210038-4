@@ -16,3 +16,6 @@
 - [x] การรวมศูนย์อ่าน Config จาก Environment Variables
 - [x] การทำงานของ Health Check ลึกถึงระดับฐานข้อมูล
 - [x] ความแตกต่างระหว่างโหมด Development และ Production Build
+
+### 🔗 https://campus-service-68543210038-4.onrender.com/
+ฐานข้อมูล: SQLite ไฟล์ (รีเซ็ตเมื่อ restart) / Turso (ข้อมูลถาวร)
