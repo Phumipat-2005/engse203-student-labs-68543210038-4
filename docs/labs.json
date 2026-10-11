@@ -159,5 +159,22 @@
     "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-11/labs/week-11/source",
     "hasPublish": true,
     "sourceEntries": 14
+  },
+  {
+    "week": "week-12",
+    "title": "testing-debugging",
+    "status": "submitted",
+    "sourceOrigin": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-12/labs/week-12/source",
+    "originalRepoUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4",
+    "originalCommit": "LAB12: test + debug 4 bugs",
+    "pullRequestUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/pull/11",
+    "submissionTag": "lab-12-submission-v1",
+    "testStatus": "not-tested",
+    "notes": "ส่งงาน LAB12 ครบทุก Checkpoint(44-47)",
+    "demoUrl": "https://campus-service-week-12-68543210038-4.onrender.com/",
+    "pageUrl": "https://Phumipat-2005.github.io/engse203-student-labs-68543210038-4/labs/week-12/",
+    "sourceUrl": "https://github.com/Phumipat-2005/engse203-student-labs-68543210038-4/tree/lab/week-12/labs/week-12/source",
+    "hasPublish": true,
+    "sourceEntries": 17
   }
 ]
