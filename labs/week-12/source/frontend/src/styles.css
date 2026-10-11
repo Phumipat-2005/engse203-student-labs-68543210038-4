@@ -30,6 +30,8 @@ input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="tr
 .radio-label { display:inline-flex; align-items:center; gap:.35rem; margin-right:1rem; }
 .error { min-height:1.1rem; color:var(--danger); }
 .status { min-height:1.2rem; }
+.status-actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+.status-actions button:disabled { cursor:not-allowed; opacity:.65; }
 .button { border:1px solid transparent; border-radius:.6rem; padding:.62rem .82rem; font-weight:800; cursor:pointer; }
 .button.primary,.filter-active { color:white; background:var(--blue); }
 .button.secondary { color:var(--navy); border-color:var(--border); background:#eef4fb; }
