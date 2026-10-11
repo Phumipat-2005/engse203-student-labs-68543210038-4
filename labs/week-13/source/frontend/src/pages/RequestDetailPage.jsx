@@ -3,13 +3,15 @@ import { Link, useParams } from 'react-router-dom';
 import ErrorState from '../components/ErrorState.jsx';
 import LoadingState from '../components/LoadingState.jsx';
 import useManualReload from '../hooks/useManualReload.js';
-import { getRequestById } from '../services/requestService.js';
+import { getRequestById, updateRequestStatus } from '../services/requestService.js';
 
 function RequestDetailPage() {
   const { requestId } = useParams();
   const [loadState, setLoadState] = useState('loading');
   const [request, setRequest] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [statusError, setStatusError] = useState('');
+  const [updating, setUpdating] = useState(false);
   const [reloadKey, reload] = useManualReload();
 
   useEffect(() => {
@@ -27,6 +29,19 @@ function RequestDetailPage() {
     return () => { ignore = true; };
   }, [requestId, reloadKey]);
 
+  async function handleChangeStatus(nextStatus) {
+    setUpdating(true);
+    setStatusError('');
+    try {
+      const updated = await updateRequestStatus(request.id, nextStatus);
+      setRequest(updated);
+    } catch (error) {
+      setStatusError(error instanceof Error ? error.message : 'เปลี่ยนสถานะไม่สำเร็จ');
+    } finally {
+      setUpdating(false);
+    }
+  }
+
   return (
     <section data-testid="page-request-detail">
       <div className="page-heading"><div><p className="eyebrow dark">DYNAMIC ROUTE</p><h1>รายละเอียดคำร้อง</h1><p>Request ID: <code>{requestId}</code></p></div></div>
@@ -39,6 +54,22 @@ function RequestDetailPage() {
         <article className="panel detail-card">
           <h2>{request.requestType}</h2>
           <dl><div><dt>ID</dt><dd>{request.id}</dd></div><div><dt>ผู้แจ้ง</dt><dd>{request.requesterName}</dd></div><div><dt>สถานที่</dt><dd>{request.location}</dd></div><div><dt>รายละเอียด</dt><dd>{request.details}</dd></div><div><dt>ความเร่งด่วน</dt><dd>{request.priority}</dd></div><div><dt>สถานะ</dt><dd>{request.status}</dd></div></dl>
+          <h3>เปลี่ยนสถานะ</h3>
+          <div className="status-actions" aria-label="เปลี่ยนสถานะคำร้อง">
+            {['pending', 'in-progress', 'completed'].map((status) => (
+              <button
+                className="button secondary"
+                key={status}
+                type="button"
+                disabled={updating || request.status === status}
+                aria-pressed={request.status === status}
+                onClick={() => handleChangeStatus(status)}
+              >
+                {updating ? 'กำลังอัปเดต…' : status}
+              </button>
+            ))}
+          </div>
+          {statusError && <p className="error" role="alert">{statusError}</p>}
           <Link to="/">กลับ Dashboard</Link>
         </article>
       )}
