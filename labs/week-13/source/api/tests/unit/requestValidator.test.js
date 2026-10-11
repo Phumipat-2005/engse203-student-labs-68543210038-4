@@ -85,6 +85,16 @@ describe('validateRequestInput — ชนิดข้อมูลและคว
     expect(validateRequestInput(withField({ requesterName: 'ก'.repeat(100) }))).toEqual([]);
     expect(validateRequestInput(withField({ requesterName: 'ก'.repeat(101) }))).toHaveLength(1);
   });
+  test.each([123, ['ห้อง 301'], { room: 301 }, true])('สถานที่เป็น %j → ต้องเป็นข้อความ', (location) => {
+    expect(validateRequestInput(withField({ location }))).toContain('สถานที่ต้องเป็นข้อความ');
+  });
+  test('สถานที่ 100 ตัวอักษร → ผ่าน · 101 → error', () => {
+    expect(validateRequestInput(withField({ location: 'ก'.repeat(100) }))).toEqual([]);
+    expect(validateRequestInput(withField({ location: 'ก'.repeat(101) }))).toContain('สถานที่ต้องไม่เกิน 100 ตัวอักษร');
+  });
+  test.each([123, ['รายละเอียด'], { text: 'รายละเอียด' }, false])('รายละเอียดเป็น %j → ต้องเป็นข้อความ', (details) => {
+    expect(validateRequestInput(withField({ details }))).toContain('รายละเอียดต้องเป็นข้อความ');
+  });
   test('รายละเอียด 1000 ตัวอักษร → ผ่าน · 1001 → error', () => {
     expect(validateRequestInput(withField({ details: 'ก'.repeat(1000) }))).toEqual([]);
     expect(validateRequestInput(withField({ details: 'ก'.repeat(1001) }))).toHaveLength(1);

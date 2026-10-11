@@ -11,9 +11,5 @@ router.post('/', validateRequest, controller.createRequest);
 router.get('/:id', controller.getRequest);
 router.put('/:id', authenticate, requireRole('staff'), controller.updateRequestStatus);
 router.delete('/:id', authenticate, requireRole('staff'), controller.deleteRequest);
-// 🏫 TODO W13-AUTH (CP51): เปลี่ยนสถานะและลบ ได้เฉพาะเจ้าหน้าที่
-//   router.put('/:id', authenticate, requireRole('staff'), controller.updateRequestStatus);
-router.put('/:id', controller.updateRequestStatus);
-router.delete('/:id', controller.deleteRequest);
 
 export default router;

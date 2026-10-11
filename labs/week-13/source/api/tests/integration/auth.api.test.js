@@ -22,11 +22,37 @@ describe('POST /api/auth/login', () => {
     expect(r.status).toBe(401);
   });
 
-  // 🏫 TODO W13-LOGIN (CP50): อีเมลที่ไม่มี ต้องได้ข้อความ error เดียวกับรหัสผ่านผิด
+  test('อีเมลที่ไม่มีในระบบ → 401 ด้วยข้อความเดียวกับรหัสผ่านผิด', async () => {
+    const [wrongPassword, unknownEmail] = await Promise.all([
+      request(app).post('/api/auth/login').send({ ...STAFF, password: 'nope1234' }),
+      request(app).post('/api/auth/login').send({ email: 'missing@rmutl.ac.th', password: 'nope1234' }),
+    ]);
+    expect(unknownEmail.status).toBe(401);
+    expect(unknownEmail.body.error).toBe(wrongPassword.body.error);
+  });
+
+  test('ผู้แจ้งทั่วไปไม่มีรหัสผ่านและเข้าสู่ระบบไม่ได้', async () => {
+    const r = await request(app).post('/api/auth/login').send({
+      email: 'somchai@rmutl.ac.th',
+      password: 'anything-123',
+    });
+    expect(r.status).toBe(401);
+  });
 });
 
 describe('สิทธิ์ของ PUT / DELETE', () => {   // มีอยู่แล้วใน starter — เติมต่อจาก test 'ไม่มี token → 401' ตรง TODO W13-AUTH
   const put = () => request(app).put('/api/requests/REQ-001').send({ status: 'completed' });
+
+  test('ไม่มี token → 401', async () => {
+    const r = await put();
+    expect(r.status).toBe(401);
+    expect(r.headers['www-authenticate']).toBe('Bearer');
+  });
+
+  test('DELETE ไม่มี token → 401', async () => {
+    const r = await request(app).delete('/api/requests/REQ-001');
+    expect(r.status).toBe(401);
+  });
 
   test('token ที่เซ็นด้วย secret อื่น (ปลอม) → 401', async () => {
     const r = await put().set('Authorization', `Bearer ${tokenFor('staff', 'not-the-real-secret')}`);
